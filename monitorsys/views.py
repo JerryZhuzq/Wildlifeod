@@ -1,9 +1,36 @@
-from django.shortcuts import render
+from django.shortcuts import render,render_to_response
 from django.http import JsonResponse
+from django.template import RequestContext
+from django.template.context_processors import csrf
+from monitorsys.models import UserInfo, VideoInfo
 import os
 
 # Create your views here.
-
+def login(request):
+    if request.method == 'POST':
+        username=request.POST['username']
+        password=request.POST['password']
+        if username != "" and password != "":
+            userResult = UserInfo.objects.filter(username=username,password=password)
+            print(UserInfo.objects.all())
+            print(userResult)
+            if(len(userResult)>0):
+                request.session['username']=username
+                user=UserInfo.objects.get(username=username)
+                user_name=user.username
+                return render_to_response('index.html',context=csrf(request))
+                # return render_to_response('index.html',locals(), context_instance=RequestContext(request))
+            else:
+                c = csrf(request)
+                c.update({'message':"用户名或密码错误"})
+                return render_to_response('login.html',context = c)
+        else:
+            c = csrf(request)
+            c.update({'message':"用户名或密码不能为空"})
+            return render_to_response('login.html',context = c)
+            # return render_to_response('login.html',{'message':"用户名或密码不能为空"}, context_instance=RequestContext(request))
+    else:
+        return render(request,'login.html')
 
 def index(request):
 	return render(request,'index.html')

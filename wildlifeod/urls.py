@@ -19,7 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^$',monitorsys_views.index),
+    url(r'^$',monitorsys_views.login),
+    url(r'^index/',monitorsys_views.index, name = "index"),
     url(r'^upload_img/', monitorsys_views.upload_img, name = "upload_img"),
     url(r'^upload_video/', monitorsys_views.upload_video, name = "upload_video"),
     url(r'^admin/', admin.site.urls),
