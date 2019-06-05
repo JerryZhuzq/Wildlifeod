@@ -196,12 +196,14 @@
                                 else
                                 {
                                 var html = '';
+                                var wildlife_name = value[2];
+                                var alarm_loca = value[1];
                                 html += '<div class="feature_section ano_feature_section">';
                                 html += '<div class="container">';
                                 html += '<div class="rightside">';
-                                html += '<h2>' + value[1] + '</h2><br />' + '<h2>' + value[2] + '</h2>';
+                                html += '<h2>' + alarm_loca + '</h2><br />' + '<h2>' + wildlife_name + '</h2>';
                                 html += '<div class="feature">';
-                                html += '<a href="{% url 'raise_alarm' %}?wildlife_name='value[2]'&alarm_loca='value[1]'"><span class="fa fa-life-ring"></span></a>'; //new
+                                html += '<a href="{% url 'raise_alarm' 'wildlife_name' 'alarm_loca' %}"><span class="fa fa-life-ring"></span></a>'; //new
                                 html += '<div class="description"> ';
                                 html += '<strong>发出警报</strong> <br />';
                                 html += '</div>';

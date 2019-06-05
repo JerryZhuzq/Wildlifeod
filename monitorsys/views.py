@@ -55,8 +55,8 @@ def upload_video(request):
 				video_dict[video_path].append("大象")
 	return JsonResponse(video_dict)
 
-def raise_alarm(request):
-	if request.method == "POST":
+def raise_alarm(request, wildlife_name, alarm_loca):
+	if wildlife_name != "":
 		host_email = '846527233@qq.com'
 		target_email = 'jerryzhu_@outlook.com'
 		wildlife_name = request.GET['wildlife_name']
