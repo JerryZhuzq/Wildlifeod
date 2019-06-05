@@ -122,3 +122,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.qq.com'  # 如果是 163 改成 smtp.163.com
+EMAIL_PORT = 465
+EMAIL_HOST_USER = '846527233@qq.com' # 帐号
+EMAIL_HOST_PASSWORD = 'zzq-aa971018'  # 密码
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+

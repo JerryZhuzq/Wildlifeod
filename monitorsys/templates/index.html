@@ -201,14 +201,14 @@
                                 html += '<div class="rightside">';
                                 html += '<h2>' + value[1] + '</h2><br />' + '<h2>' + value[2] + '</h2>';
                                 html += '<div class="feature">';
-                                html += '<a href="#"><span class="fa fa-life-ring"></span></a>';
-                                html += '<div class="description"> ';//<strong>报警类型</strong> <br />' + value + '</div>';
+                                html += '<a href="{% url 'raise_alarm' %}?wildlife_name='value[2]'&alarm_loca='value[1]'"><span class="fa fa-life-ring"></span></a>'; //new
+                                html += '<div class="description"> ';
                                 html += '<strong>发出警报</strong> <br />';
                                 html += '</div>';
                                 html += '</div>';
                                 html += '<div class="feature">';
                                 html += '<a href="#"><span class="fa fa-play-circle-o"></span></a>';
-                                html += '<div class="description"> ';//<strong>报警类型</strong> <br />' + value + '</div>';
+                                html += '<div class="description"> ';
                                 html += '<strong>视频链接</strong> <br />';
                                 html += '</div>';
                                 html += '</div>';
@@ -228,196 +228,11 @@
         </script>
         <!-- 总体的逻辑是后台算法往static中添加图片，ajax定时发送请求检索新图片。-->
         
-                <div class="slider_main">
-        <div id="full-slider-wrapper">
-        <div id="layerslider" style="width:100%;height:473px;">
-        
-        
-                                <div class="ls-slide" data-ls="transition2d:1;timeshift:-1000;">
-                                <img src="{% static 'images/slider/slide-bg.jpg' %}" class="ls-bg" alt="Slide background"/>
-                                
-                                
-                                <div class="ls-l videopreview" style="top:87px;left:0px;white-space: nowrap;" data-ls="offsetxin:-200;durationin:2000;offsetxout:-200;">
-                                <!-- <iframe src="http://player.vimeo.com/video/34134308?portrait=0&amp;color=ff9933&autoplay=1" width="443" height="290" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
-                                <img src="{% static 'images/player.png' %}" alt="" />
-                                </div>
-                                
-                                
-                                <div class="ls-l" style="top:140px;left:638px;white-space: nowrap;" data-ls="offsetxin:0;delayin:1000;easingin:easeInOutQuart;scalexin:0.7;scaleyin:0.7;offsetxout:-800;durationout:1000;">
-                                <h2 class="l1">Landing Page</h2>
-                                </div>
-                                
-                                <div class="ls-l" style="top:200px;left:583px;white-space: nowrap;" data-ls="offsetxin:0;delayin:1000;easingin:easeInOutQuart;scalexin:0.7;scaleyin:0.7;offsetxout:-800;durationout:1000;">
-                                <h2 class="l2">Powerfull & Effective theme for your business</h2>
-                                </div>
-                                
-                            
-                                
-                                <div class="ls-l" style="top:265px;left:598px;" data-ls="offsetxin:0;delayin:1000;easingin:easeInOutQuart;scalexin:0.7;scaleyin:0.7;offsetxout:-800;durationout:1000;">
-                                <a href="#" class="button2">Learn More</a>
-                                </div>
-                                
-                                
-                                <div class="ls-l" style="top:265px;left:810px;" data-ls="offsetxin:0;delayin:1000;easingin:easeInOutQuart;scalexin:0.7;scaleyin:0.7;offsetxout:-800;durationout:1000;">
-                                <a href="#" class="button1">Start Now</a>
-                                </div>
-                                
-                               
-                                </div><!--FIRST SLIDE-->
-                                
-                                
-                                
-                                <div class="ls-slide" data-ls="transition2d:1;timeshift:-1000;">
-                                <img src="{% static 'images/slider/slide-bg.jpg'%}" class="ls-bg" alt="Slide background"/>
-                                
-                                
-                                <div class="ls-l videopreview" style="top:87px;left:0px;white-space: nowrap;" data-ls="offsetxin:-200;durationin:2000;offsetxout:-200;">
-                                <!--<iframe src="http://player.vimeo.com/video/34134308?portrait=0&amp;color=ff9933&autoplay=1" width="443" height="290" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
-                                <img src="{% static 'images/player.png' %}" alt="" />
-                                </div>
-                                
-                                
-                                <div class="ls-l" style="top:140px;left:638px;white-space: nowrap;" data-ls="offsetxin:0;delayin:1000;easingin:easeInOutQuart;scalexin:0.7;scaleyin:0.7;offsetxout:-800;durationout:1000;">
-                                <h2 class="l1">Landing Page</h2>
-                                </div>
-                                
-                                <div class="ls-l" style="top:200px;left:583px;white-space: nowrap;" data-ls="offsetxin:0;delayin:1000;easingin:easeInOutQuart;scalexin:0.7;scaleyin:0.7;offsetxout:-800;durationout:1000;">
-                                <h2 class="l2">Powerfull & Effective theme for your business</h2>
-                                </div>
-                                
-                            
-                                
-                                <div class="ls-l" style="top:265px;left:598px;" data-ls="offsetxin:0;delayin:1000;easingin:easeInOutQuart;scalexin:0.7;scaleyin:0.7;offsetxout:-800;durationout:1000;">
-                                <a href="#" class="button2">Learn More</a>
-                                </div>
-                                
-                                
-                                <div class="ls-l" style="top:265px;left:810px;" data-ls="offsetxin:0;delayin:1000;easingin:easeInOutQuart;scalexin:0.7;scaleyin:0.7;offsetxout:-800;durationout:1000;">
-                                <a href="#" class="button1">Start Now</a>
-                                </div>
-                                
-                               
-                                </div><!--FIRST SLIDE-->
-                                
-                     
-           
-            
-        </div>
-        </div> 
-        </div>
-        
-        
-       
+
         
         
         
-        
-        <div class="common_section" id="testimonials_part">
-        <div class="container">
-        
-                    <h2>Trusted worldwide</h2>
-                    <h4 style="margin:0 0 40px 0;">One machine can do the work of fifty ordinary men. No machine can do the work of one extraordinary man</h4>
-                    
-                   
-                    <br clear="all" />
-                    
-                    <ul class="bxslider">
-                    
-                    <li>
-                    <div class="testimonial_box">
-                    <div class="quote_button"><img src="{% static 'images/icons/i7.png' %}" alt="" /></div>
-                    <div class="para">
-                    Never expected to get such a powerful-functionality theme for this little money! It is a real pleasure to work with, I think it simply guesses my thoughts! All the customization is playfully easy, reminds more of a game rather than website setup.
-                    </div>
-                    <div class="clientinfo">
-                    <img src="{% static 'images/clients/c1.png' %}" alt="" />
-                    Karen Walker
-                    </div>
-                    </div>
-                    </li>
-                    
-                    </ul>
-                    
-        
-        </div>
-        </div>
-        
-        
-        
-        
-        
-        <div class="pricing_table_section" id="pricing_part">
-        <div class="container">
-        
-                    <h2>Price Table</h2>
-                    <h4>term sheet convertible note colluding bootstrapping</h4>
-                    
-                   
-                    <div class="insider">
-                    
-                    
-                    <div class="block">
-                    <div class="head">
-                    <h2>Basic</h2>
-                    <p>From <strong>$59</strong> per month</p>
-                    </div>
-                    <ul>
-                    <li>Total Users <span>10</span></li>
-                    <li>Unlimited Styles <span><img src="{% static 'images/icons/i8.png' %}" alt="" /></span></li>
-                    <li>Advance Protection <span><img src="{% static 'images/icons/i8.png' %}" alt="" /></span></li>
-                    <li>Cloud Storage <span><img src="{% static 'images/icons/i8.png' %}" alt="" /></span></li>
-                    <li>24/7 Customer Service <span><img src="{% static 'images/icons/i8.png' %}" alt="" /></span></li>
-                    <li>Backup Service <span><img src="{% static 'images/icons/i9.png' %}" alt="" /></span></li>
-                    <li><h5>$59 Per Month</h5> <a href="#" class="button5">SIGN UP</a></li>
-                    </ul>
-                    </div>
-                    
-                    
-                    <div class="block">
-                    <div class="head">
-                    <h2>Premium</h2>
-                    <p>From <strong>$59</strong> per month</p>
-                    </div>
-                    <ul>
-                    <li>Total Users <span>10</span></li>
-                    <li>Unlimited Styles <span><img src="{% static 'images/icons/i8.png' %}" alt="" /></span></li>
-                    <li>Advance Protection <span><img src="{% static 'images/icons/i8.png' %}" alt="" /></span></li>
-                    <li>Cloud Storage <span><img src="{% static 'images/icons/i8.png' %}" alt="" /></span></li>
-                    <li>24/7 Customer Service <span><img src="{% static 'images/icons/i8.png' %}" alt="" /></span></li>
-                    <li>Backup Service <span><img src="{% static 'images/icons/i9.png' %}" alt="" /></span></li>
-                    <li><h5>$59 Per Month</h5> <a href="#" class="button5 button6">SIGN UP</a></li>
-                    </ul>
-                    </div>
-                    
-                    
-                    
-                    <div class="block">
-                    <div class="head">
-                    <h2>Ultimate</h2>
-                    <p>From <strong>$59</strong> per month</p>
-                    </div>
-                    <ul>
-                    <li>Total Users <span>10</span></li>
-                    <li>Unlimited Styles <span><img src="{% static 'images/icons/i8.png' %}" alt="" /></span></li>
-                    <li>Advance Protection <span><img src="{% static 'images/icons/i8.png' %}" alt="" /></span></li>
-                    <li>Cloud Storage <span><img src="{% static 'images/icons/i8.png' %}" alt="" /></span></li>
-                    <li>24/7 Customer Service <span><img src="{% static 'images/icons/i8.png' %}" alt="" /></span></li>
-                    <li>Backup Service <span><img src="{% static 'images/icons/i9.png' %}" alt="" /></span></li>
-                    <li><h5>$59 Per Month</h5> <a href="#" class="button5">SIGN UP</a></li>
-                    </ul>
-                    </div>
-                    
-                    
-                    </div>
-                    
-        
-        </div>
-        </div>
-        
-        
-        
-        
-        <div class="common_section" id="contact_part">
+<!--         <div class="common_section" id="contact_part">
         <div class="container">
         
                     <h2>Get in touch with us</h2>
@@ -438,12 +253,12 @@
                     
         
         </div>
-        </div>
+        </div> -->
         
         
         
         
-        <div class="subscribe_section" id="subscribe_part">
+<!--         <div class="subscribe_section" id="subscribe_part">
         <div class="container">
         
                     <h2>Subscribe to our newsletter</h2>
@@ -461,7 +276,7 @@
                     
         
         </div>
-        </div>
+        </div> -->
         
         
         
@@ -471,9 +286,8 @@
 <!--             <div class = "videopreview">
             <iframe src="G:\Tensorflow\models\research\object_detection\elephant1.mp4" width="543" height="390" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div> -->
-                    <a href="#" class="footer_logo"><img src="{% static 'images/logo.png' %}" alt="" /></a>
-                   
-                    <div class="copyright">Copyright 2016 All Right Reserved - <a href="http://www.pfind.com/goodies/landiya/">Landiya</a> Theme By <a href="http://www.pfind.com/goodies/">pFind.com Goodies</a>.</div>                    
+                    <a href="#" class="footer_logo"><h2>野生动物监测系统</h2></a>
+                                    
         
         </div>
         </div>
