@@ -17,12 +17,15 @@ from django.contrib import admin
 from monitorsys import views as monitorsys_views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     url(r'^$',monitorsys_views.login),
-    url(r'^index/',monitorsys_views.index, name = "index"),
-    url(r'^raise_alarm/(\w+)/(\w+)/$', monitorsys_views.raise_alarm, name = "raise_alarm"),
+    url(r'^index/', monitorsys_views.index, name = "index"),
+    url(r'^raise_alarm/', monitorsys_views.raise_alarm, name = "raise_alarm"),
     url(r'^upload_img/', monitorsys_views.upload_img, name = "upload_img"),
+    url(r'^download_video/', monitorsys_views.download_video, name = "download_video"),
     url(r'^upload_video/', monitorsys_views.upload_video, name = "upload_video"),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+# (\w+)/(\w+)/

@@ -25,7 +25,7 @@ SECRET_KEY = '#fb+6b@3hn4sy!&x)=2m(ew%ckhil*)k!2=9uj(!-pf44vb+r+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -127,7 +127,7 @@ EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.qq.com'  # 如果是 163 改成 smtp.163.com
 EMAIL_PORT = 465
 EMAIL_HOST_USER = '846527233@qq.com' # 帐号
-EMAIL_HOST_PASSWORD = 'zzq-aa971018'  # 密码
+EMAIL_HOST_PASSWORD = 'zembatzyxpuxbdga'  # 密码
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 

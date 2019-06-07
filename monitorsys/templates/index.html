@@ -134,7 +134,7 @@
                     <li><a href="#testimonials_part">Testimonials </a></li>
                     <li><a href="#pricing_part">Pricing</a></li>
                     <li><a href="#contact_part">Contact</a></li>
-                    <li><a href="#subscribe_part">Sign Up</a></li>
+                    <li><a href="#subscribe_part">Sign Up</a></li>  send_email'+ wildlifenum +'()
                     </ul>
                     </div>
         
@@ -147,34 +147,7 @@
 
         <div class="wrapper">
 
-
-                               <!-- {var html = '';
-                                html += '<div class="feature_section ano_feature_section">';
-                                html += '<div class="container">';
-                                html += '<div class="rightside">';
-                                html += '<h2>' + value[1] + '</h2><br />' + '<h2>' + value[2] + '</h2>';
-                                html += '<div class="feature">';
-                                html += '<a href="#"><span class="fa fa-life-ring"></span></a>';
-                                html += '<div class="description"> ';//<strong>报警类型</strong> <br />' + value + '</div>';
-                                html += '<strong>发出警报</strong> <br />';
-                                html += '</div>';
-                                html += '</div>';
-                                html += '<div class="feature">';
-                                html += '<a href="#"><span class="fa fa-play-circle-o"></span></a>';
-                                html += '<div class="description"> ';//<strong>报警类型</strong> <br />' + value + '</div>';
-                                html += '<strong>视频链接</strong> <br />';
-                                html += '</div>';
-                                html += '</div>';
-                                html += '</div>';
-                                html += '<div class="leftside">';
-                                html += '<img id="' + wildlifenum + '" src="' + key + '">';
-                                html += '</div>';
-                                html += '</div>';
-                                html += '</div>';
-                                $('#update').append(html);} -->
-
                     
-
                 <div id="update"></div>
         <script type="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
         <script>
@@ -196,20 +169,22 @@
                                 else
                                 {
                                 var html = '';
+                                var wildlife_name = value[2];
+                                var alarm_loca = value[1];
                                 html += '<div class="feature_section ano_feature_section">';
                                 html += '<div class="container">';
                                 html += '<div class="rightside">';
-                                html += '<h2>' + value[1] + '</h2><br />' + '<h2>' + value[2] + '</h2>';
+                                html += '<h2>' + alarm_loca + '</h2><br />' + '<h2>' + wildlife_name + '</h2>';
                                 html += '<div class="feature">';
-                                html += '<a href="raise_alarm/?wildlife_name='value[2]'&alarm_loca='value[1]'"><span class="fa fa-life-ring"></span></a>'; //new
+                                html += '<a href="javascript:void(0);" onclick="send_email'+ wildlifenum+'()"><span class="fa fa-life-ring"></span></a>'; //new
                                 html += '<div class="description"> ';
                                 html += '<strong>发出警报</strong> <br />';
                                 html += '</div>';
                                 html += '</div>';
                                 html += '<div class="feature">';
-                                html += '<a href="#"><span class="fa fa-play-circle-o"></span></a>';
+                                html += '<a href="javascript:void(0);" onclick="source_video'+wildlifenum+'()"><span class="fa fa-play-circle-o"></span></a>';
                                 html += '<div class="description"> ';
-                                html += '<strong>视频链接</strong> <br />';
+                                html += '<strong>视频链接 源视频名: '+wildlifenum+'</strong> <br />';
                                 html += '</div>';
                                 html += '</div>';
                                 html += '</div>';
@@ -217,16 +192,21 @@
                                 html += '<video id="' + wildlifenum + '" src="' + key + '" width="443" height="290" type="video/mp4" autoplay="autoplay" controls="controls"></video>';
                                 html += '</div>';
                                 html += '</div>';
-                                html += '</div>';
+                                html += '</div>'; //下面是new
+                                html += '<script>';
+                                html += 'function send_email'+ wildlifenum +'(){'; 
+                                html += '$.get("{% url 'raise_alarm' %}",{"wildlife_name":"' + wildlife_name +'","alarm_loca":"' + alarm_loca + '"});}';
+                                html += 'function source_video'+ wildlifenum +'(){'; 
+                                html += '$.get("{% url 'download_video' %}",{"video_name":"' + wildlifenum +'"}, function(data){$("#source").append(data);});}';
+                                html += '<\/script>';
                                 $('#update').append(html);}
                                 
-
                             });
                         }
                     });
             }
         </script>
-        <!-- 总体的逻辑是后台算法往static中添加图片，ajax定时发送请求检索新图片。-->
+        <!-- 总体的逻辑是后台算法往static中添加图片，ajax定时发送请求检索新图片。var videoinfo=data;videoinfo+="<iframe src='static/video/0.mp4'><\/iframe>";alert(videoinfo);-->
         
 
         
@@ -286,7 +266,7 @@
 <!--             <div class = "videopreview">
             <iframe src="G:\Tensorflow\models\research\object_detection\elephant1.mp4" width="543" height="390" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div> -->
-                    <a href="#" class="footer_logo"><h2>野生动物监测系统</h2></a>
+                    <a href="#" class="footer_logo" id = "source"><h2>监控源视频</h2></a>
                                     
         
         </div>
